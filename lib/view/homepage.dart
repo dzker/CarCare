@@ -1,10 +1,90 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:logger/logger.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+  // final promoWidget = PromoWidget();
+
+  Widget getPromoWidget(
+      {required String titleText,
+      required String subtitleText,
+      required iconImage}) {
+    return SizedBox(
+      height: 120,
+      child: Card(
+        elevation: 3,
+        margin: const EdgeInsets.all(12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  title: Text(
+                    titleText,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    subtitleText,
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                  trailing: Image.asset('assets/images/$iconImage'),
+                ),
+              ],
+            )),
+      ),
+    );
+  }
+
+  Widget getPromoWidgetSticky({
+    required String titleText,
+    required String subtitleText,
+    required iconImage,
+    Widget? leading,
+    Widget? trailing,
+    BorderRadiusGeometry? borderRadius,
+  }) {
+    return SizedBox(
+      height: 120,
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+            borderRadius: borderRadius ??
+                const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    bottomLeft: Radius.circular(15))),
+        child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  leading: leading ?? const Icon(Icons.arrow_forward_ios),
+                  title: Text(
+                    titleText,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    subtitleText,
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                  trailing: trailing ?? Image.asset('assets/images/$iconImage'),
+                ),
+              ],
+            )),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -201,43 +281,42 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.only(right: 250, top: 10),
                 child: Text(
                   "What's next?",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                 ),
               ),
-              PromoWidget()
+              getPromoWidget(
+                  titleText: 'Call Technician',
+                  subtitleText: 'Be in Touch',
+                  iconImage: 'handhold.png'),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30),
+                child: getPromoWidgetSticky(
+                    titleText: 'Track Your Technician',
+                    subtitleText: 'Your technician in right on the way',
+                    iconImage: 'hilux.png',
+                    leading: Image.asset('assets/images/hilux.png'),
+                    trailing: const Icon(Icons.arrow_forward_ios)),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 30),
+                child: getPromoWidgetSticky(
+                    titleText: 'Claim Your Giveaway',
+                    subtitleText: 'Free diagnostics',
+                    iconImage: 'giveaway.png',
+                    leading: const Icon(Icons.arrow_back_ios),
+                    trailing: Image.asset('assets/images/giveaway.png'),
+                    borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(20),
+                        bottomRight: Radius.circular(20))),
+              )
             ],
           ),
         ));
-  }
-}
-
-class PromoWidget extends StatelessWidget {
-  PromoWidget({super.key});
-  final Logger logger = Logger();
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 120,
-      child: Card(
-        elevation: 3,
-        margin: const EdgeInsets.all(8),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: const Padding(
-            padding: EdgeInsets.all(8),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ListTile(
-                  leading: Icon(Icons.album),
-                  title: Text("Call Technician"),
-                  subtitle: Text("Be in Touch"),
-                ),
-              ],
-            )),
-      ),
-    );
   }
 }
