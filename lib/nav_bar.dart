@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:carbookingservice/view/homepage.dart';
+import 'package:carbookingservice/view/bookingpage.dart';
 
 class NavBar extends StatefulWidget {
-  NavBar({super.key});
+  const NavBar({super.key});
 
   @override
   State<NavBar> createState() => _NavBarState();
@@ -44,6 +45,7 @@ class _NavBarState extends State<NavBar> {
       ),
       body: <Widget>[
         HomePage(),
+        BookingPage(),
       ][currentPageIndex],
     );
   }
