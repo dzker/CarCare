@@ -4,7 +4,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:logger/logger.dart';
+
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
