@@ -1,3 +1,5 @@
+import 'package:carbookingservice/view/campaignpage.dart';
+import 'package:carbookingservice/view/helpcenterpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -46,6 +48,8 @@ class _NavBarState extends State<NavBar> {
       body: <Widget>[
         HomePage(),
         BookingPage(),
+        CampaignPage(),
+        HelpCenterPage(),
       ][currentPageIndex],
     );
   }
