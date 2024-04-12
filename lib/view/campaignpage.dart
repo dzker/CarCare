@@ -1,4 +1,6 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:carbookingservice/model/campaigndata/event_items.dart';
+import 'package:carbookingservice/widget/campaign_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -103,8 +105,14 @@ class _CampaignPageState extends State<CampaignPage>
                         height: 500,
                         child: TabBarView(
                           controller: _tabController,
-                          children: const <Widget>[
-                            Center(child: Text('Hei')),
+                          children: <Widget>[
+                            ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: EventItems.eventItems.length,
+                                itemBuilder: (context, index) {
+                                  return CampaignWidget(
+                                      eventItems: EventItems.eventItems[index]);
+                                }),
                             Center(child: Text('Hzzz')),
                             Center(child: Text('Huiiii')),
                           ],
