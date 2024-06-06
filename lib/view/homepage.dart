@@ -280,7 +280,7 @@ class HomePage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(right: 250, top: 10),
                 child: Text(
-                  "What's Today?",
+                  "What's next?",
                   style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                 ),
               ),
