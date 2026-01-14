@@ -1,4 +1,4 @@
-package com.example.carbookingservice
+package com.dzker.carcare
 
 import io.flutter.embedding.android.FlutterActivity
 
